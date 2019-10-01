@@ -1,0 +1,18 @@
+<div class="container"style="margin-bottom: 30px">
+  <p id="notice"><%= notice %></p>
+
+  <div style="text-align: center; margin-top: 40px">
+<%#= image_tag "sea.jpeg", {height: 450, width: 750} %>
+<!--    <img src="<%#=asset_path(@article.image) %>" width="500" class="brand-link" >-->
+
+    <%= image_tag @article.image.url if @article.image?%>
+  </div>
+  <h2 style="margin-top: 30px; margin-left: 30px; color: #2e59d9"><%= @article.name %></h2>
+
+  <div style="text-align: justify; font-size: 20px;margin: 30px;">
+    <%= @article.descript %>
+  </div>
+  <p style="margin: 40px; margin-bottom: 30px; font-weight: bolder">
+    <%= @article.create_time %>
+  </p>
+</div>

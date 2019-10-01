@@ -1,0 +1,97 @@
+
+<article style="text-align: center; width: 70%; clear: both; margin-left: 100px">
+  <%= form_with(model: user, local: true) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <table style="text-align: left; width: 75%; margin-left: 130px" class="table table-borderless">
+      <tr>
+        <td><h6><%= form.label :username %></h6></td>
+        <td><%= form.text_field :username, class: "form-control", placeholder: "Username" %></td>
+      </tr>
+      <tr>
+        <td><h6><%= form.label :password %></h6></td>
+        <td><%= form.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", placeholder: "Password"%></td>
+<!--        <td><%#= form.text_field :password, class: "form-control", placeholder: "Password"%></td>-->
+      </tr>
+
+      <tr>
+        <td><h6><%= form.label :fullname %></h6></td>
+        <td><%= form.text_field :fullname, class: "form-control", placeholder: "Fullname" %></td>
+      </tr>
+
+      <tr>
+        <td><h6><%= form.label :email %></h6></td>
+        <td><%= form.text_field :email, class: "form-control", placeholder: "Email" %></td>
+      </tr>
+
+      <tr>
+        <td><h6><%= form.label :phone_number %></h6></td>
+        <td><%= form.text_field :phone_number, class: "form-control", placeholder: "Phone number" %></td>
+      </tr>
+
+      <tr>
+        <td><h6><%= form.label :gender %></h6></td>
+        <td style="font-size: 16px"><%= form.radio_button("gender", "true") %>Male
+          <%= form.radio_button("gender", "false", class:"cach") %>Female</td>
+
+      </tr>
+      <tr>
+        <td><h6><%= form.label :address %></h6></td>
+        <td><%= form.text_field :address, class: "form-control", placeholder: "Address" %></td>
+      </tr>
+
+      <tr>
+        <td><h6><%= form.label :image %></h6></td>
+        <td>
+          <div class="input-group mb-3"><div class="custom-file">
+            <%= form.file_field :image, type: "file", class: "custom-file-input", id: "inputGroupFile04", hide_label: true %>
+            <%= form.label :image, class: "custom-file-label", for: "inputGroupFile04"%>
+            <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+          </div></div>
+
+        </td>
+      </tr>
+
+      <tr>
+        <td><h6><%= form.label :birth %></h6></td>
+        <td>
+          <%#= form.date_select :birth, class: "form-control", placeholder: "Birthday", start_year: Date.today.year - 18, end_year: Date.today.year - 50%>
+          <%= date_field(:user, :birth, class: "form-control") %>
+        </td>
+      </tr>
+
+      <tr>
+        <td><h6><%= form.label :role_id %></h6></td>
+        <td style="font-size: 16px"><%= form.radio_button("role_id", "1") %>Admin
+          <%= form.radio_button("role_id", "2", class:"cach") %>Editer
+          <%= form.radio_button("role_id", "3", class:"cach") %>Guest</td>
+
+      </tr>
+
+<!--      <tr>-->
+<!--        <td><h6><%#= form.label :role_id %></h6></td>-->
+<!--        <td><%#= collection_select(:user, :role_id, Role.all, :id, :descript, class: "btn btn-danger dropdown-toggle") %>-->
+<!--        </td>-->
+<!--      </tr>-->
+      <tr><td>
+        <!--    <td><%#= form.text_field :time_create, class: "form-control", value:  %>-->
+      </td><td>
+        <div class="actions">
+
+          <%= form.submit %>
+        </div></td>
+      </tr>
+    </table>
+  <% end %>
+</article>
+</body>
+</html>

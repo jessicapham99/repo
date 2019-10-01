@@ -1,0 +1,104 @@
+<article style="text-align: center; width: 70%; clear: both; margin-left: 200px">
+  <%= form_with(model: article, local: true) do |form| %>
+    <% if article.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+        <ul>
+          <% article.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <table style="text-align: left; width: 75%" class="table table-borderless">
+      <tr>
+        <td><h6><%= form.label :name %></h6></td>
+        <td><%= form.text_field :name, class: "form-control", placeholder: "Subject" %></td>
+      </tr>
+
+
+
+      <tr>
+        <td><h6><%= form.label :category_id %></h6></td>
+        <!--      <td><%#= collection_select(:article, :category_id, Category.all, :id, :name, class: "custom-select", id: "inputGroupSelect02") %>-->
+        <!--        <div class="input-group-append">-->
+        <!--          <label class="input-group-text" for="inputGroupSelect02">Options</label>-->
+        <!--        </div></td>-->
+        <td>
+          <div class="input-group mb-3">
+            <div class="form-control">
+              <%= collection_select(:article,:category_id, Category.all, :id, :name, id: "inputGroupSelect02") %>
+            </div>
+            <!--          <select class="custom-select" id="inputGroupSelect02">-->
+            <!--            <option selected>Choose...</option>-->
+            <!--            <option value="1">One</option>-->
+            <!--            <option value="2">Two</option>-->
+            <!--            <option value="3">Three</option>-->
+            <!--          </select>-->
+
+            <div class="input-group-append">
+              <label class="input-group-text" for="inputGroupSelect02">Choose category</label>
+            </div>
+          </div>
+
+        </td>
+      </tr>
+
+      <tr>
+<!--        <td><h6><%#= form.label :image %></h6></td>-->
+<!--        <td>-->
+<!--          <div class="input-group mb-3"><div class="custom-file">-->
+          <%#= form.text_field :image, type: "file", class: "custom-file-input", id: "inputGroupFile04", hide_label: true %>
+          <%#= form.label :image, class: "custom-file-label", for: "inputGroupFile04"%>
+
+            <%#= f.label :image %>
+
+            <%#= form.text_field :image, type: "file", class: "custom-file-input", id: "inputGroupFile04", hide_label: true %>
+            <%# if form.object.image? %>
+              <%#= image_tag f.object.image.thumb.url %>
+              <%#= form.label :remove_image, class: "custom-file-label", for: "inputGroupFile04" %>
+              <%#= form.check_box :remove_image, class: "custom-file-label", for: "inputGroupFile04" %>
+            <%# end %>
+<!--          </div>-->
+<!--        </div>-->
+
+            <%#= form.file_field :photo, name: "item_photos[photo][]", class: "upload-image" %>
+
+<!--        </td>-->
+        <td><h6><%= form.label :image %></h6></td>
+        <td>
+          <div class="input-group mb-3"><div class="custom-file">
+          <%= form.file_field :image, type: "file", class: "custom-file-input", id: "inputGroupFile04", hide_label: true %>
+          <%= form.label :image, class: "custom-file-label", for: "inputGroupFile04"%>
+               <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+        </div></div>
+<!--          <span class="picture">-->
+    	<%#= form.file_field :image, accept: "image/jpeg, image/gif, image/png, image/jpg" %>
+<!--    </span>-->
+        </td>
+      </tr>
+
+      <tr>
+        <td><h6><%= form.label :descript %></h6></td>
+        <td><%= form.text_area :descript, size: "60x12", class: "ckeditor" , placeholder: "Description" %></td>
+      </tr>
+
+
+      <tr>
+        <td></td><td><div class="actions">
+        <%= form.submit %>
+      </div></td></tr>
+    </table>
+  <% end %>
+
+  <script>
+      $(document).ready(function(){
+          if ($('textarea').length > 0) {
+              var data = $('.ckeditor');
+              $.each(data, function(i) {
+                  CKEDITOR.replace(data[i].id)
+              });
+          }
+      });
+  </script>
+</article>

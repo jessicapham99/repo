@@ -1,0 +1,112 @@
+<p id="notice"><%= notice %></p>
+
+<!--<h1>Categories</h1>-->
+
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Descript</th>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+    <%# @categories.each do |category| %>
+<!--      <tr>-->
+<!--        <td><%#= category.name %></td>-->
+<!--        <td><%#= category.descript %></td>-->
+<!--        <td><%#= link_to 'Show', category %></td>-->
+<!--        <td><%#= link_to 'Edit', edit_category_path(category) %></td>-->
+<!--        <td><%#= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+    <%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<br>-->
+<script>
+    $(function(){
+        $.fn.limit = function($n){
+            this.each(function(){
+                var allText   = $(this).html();
+                var tLength   = $(this).html().length;
+                var startText = allText.slice(0,$n);
+                if(tLength >= $n){
+                    $(this).html(startText+'...');
+                }else {
+                    $(this).html(startText);
+                };
+            });
+
+            return this;
+        }
+        $('p').limit(150);
+    });
+</script>
+<%#= link_to 'New Category', new_category_path %>
+<table style="width: 95%">
+  <tr>
+    <td rowspan="2" style="border-right: 1px solid #c4c4c9;">
+      <% @comment.each do |com|%>
+        <div class="card" style="width: 99%; margin: 10px; border: none">
+          <%= image_tag com['image'].url,height: "580",width: "800" unless com['image'].blank? %>
+          <div class="card-body">
+<!--            <b class="card-text"><%#= com.article.category.name %></b>-->
+<!--            <h5 class="card-title"><%#= com.article.name %></h5>-->
+            <h5 class="card-title"><a href="/articles/<%= com['id'] %>"><%= com['name'] %></a></h5>
+            <p class="card-text"><%= com['descript'] %></p>
+          </div>
+        </div>
+    <%end %>
+    </td>
+      <td>
+        <% @comment1.each do |com|%>
+          <div class="card" style="width: 99%; margin: 10px; border: none">
+            <%= image_tag com['image'].url,height: "580",width: "800" unless com['image'].blank? %>
+            <div class="card-body">
+              <b class="card-text"><%= com.article.category.name %></b>
+<!--              <h5 class="card-title"><%#= com.article.name %></h5>-->
+              <h5 class="card-title"><a href="/articles/<%= com['id'] %>"><%= com['name'] %></a></h5>
+            </div>
+          </div>
+        <%end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <% @comment2.each do |com|%>
+        <div class="card" style="width: 99%; margin: 10px; border: none">
+          <%= image_tag com['image'].url ,height: "580",width: "800" unless com['image'].blank? %>
+          <div class="card-body">
+<!--            <b class="card-text"><%#= com.article.category.name %></b>-->
+<!--            <h5 class="card-title"><%#= com.article.name %></h5>-->
+            <h5 class="card-title"><a href="/articles/<%= com['id'] %>"><%= com['name'] %></a></h5>
+
+          </div>
+        </div>
+      <%end %>
+    </td>
+  </tr>
+</table>
+<hr>
+<table>
+  <tr>
+    <td colspan="3"><b>LATEST NEWS</b></td>
+  </tr>
+  <tr>
+    <% @articles.each do |art| %>
+      <td>
+        <div class="card" style="margin: 20px;border: none; height: 200px">
+          <%= image_tag art.image.url, height: "270",width: "360" if art.image?%>
+          <div class="card-body" style="text-align: justify-all">
+            <b class="card-text"><%= art.category.name %></b>
+            <h5 class="card-title"><a href="/articles/<%= art.id %>"><%= art.name %></a></h5>
+            <p class="card-text"><%= art.descript %></p>
+            <h6 class="card-text"><%= art.create_time %></h6>
+          </div>
+        </div>
+      </td>
+    <% end %>
+  </tr>
+</table>
