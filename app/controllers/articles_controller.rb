@@ -4,13 +4,26 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    a=0
-    @articles = page(a)
-    p = (Article.count)/5
+    if params[:tag]
+      @article = Article.tagged_with(params[:tag])
+    else
+      @article = Article.all
+    end
+    @article = Article.all.order(created_at: :desc).paginate(page:params[:page], per_page: 3 )
 
-  end
-  def page(a)
-    Article.limit(5).offset(a)
+
+  #   a=0
+  #   p = (Article.count)/6.0
+  #   @articles = pages(a)
+  #   if p.class == 1.class
+  #     @pa = Array(1..p)
+  #   else
+  #     p=p+1
+  #     @pa = Array(1..p)
+  #   end
+  # end
+  # def pages(a)
+  #   Article.page(a).per(6)
   end
   # GET /articles/1
   # GET /articles/1.json

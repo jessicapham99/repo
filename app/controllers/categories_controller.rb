@@ -31,16 +31,16 @@ class CategoriesController < ApplicationController
     @articles = Article.all.order(create_time: :desc).limit(3)
   end
 def dem(a)
-  Comment
-      .connection
-      .select_all(%Q{SELECT  count(article_id) as 'count',comments.article_id,
-                          articles.name, articles.descript, articles.image, categories.name as 'catename'
+b= String a
+  sql= "SELECT  count(article_id) as 'count',comments.article_id,
+                          articles.name, articles.descript, articles.image, categories.id
                           FROM comments join articles on comments.article_id=articles.id
                           join categories on categories.id=articles.category_id
-                          where categories.id ='a'
-                          group by comments.article_id order by count desc })
-
-  Comment.includes(article: [:category]).where(:category_id => @category.id).group(:articles_id).order(:count_all).size
+                          where categories.id ='"+b+"'
+                          group by comments.article_id order by count desc"
+  Comment
+      .connection
+      .select_all(sql)
 end
 
   # GET /categories/1
@@ -49,14 +49,15 @@ end
     @categories = Category.all
     @article = Article.where(:category_id => @category.id).order(create_time: :desc).limit(1)
     @articles = Article.where(:category_id => @category.id).order(create_time: :desc).limit(3).offset(1)
-    @comment=Comment
-                 .connection
-                 .select_all(%Q{SELECT  count(article_id) as 'count',comments.article_id,
-                          articles.name, articles.descript, articles.image, categories.name as 'catename'
-                          FROM comments join articles on comments.article_id=articles.id
-                          join categories on categories.id=articles.category_id
-
-                          group by comments.article_id order by count desc})
+    # @comment=Comment
+    #              .connection
+    #              .select_all(%Q{SELECT  count(article_id) as 'count',comments.article_id,
+    #                       articles.name, articles.descript, articles.image, categories.name as 'catename'
+    #                       FROM comments join articles on comments.article_id=articles.id
+    #                       join categories on categories.id=articles.category_id
+    #
+    #                       group by comments.article_id order by count desc})
+    @comment=dem(@category.id)
   end
 
   # GET /categories/new
