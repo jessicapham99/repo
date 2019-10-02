@@ -4,9 +4,14 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all
-  end
+    a=0
+    @articles = page(a)
+    p = (Article.count)/5
 
+  end
+  def page(a)
+    Article.limit(5).offset(a)
+  end
   # GET /articles/1
   # GET /articles/1.json
   def show

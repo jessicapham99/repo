@@ -4,12 +4,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment
-                    .connection
-                    .select_all(%Q{SELECT  count(article_id) as 'count',comments.article_id,
-                          articles.name, articles.descript, articles.image
-                          FROM comments join articles on comments.article_id=articles.id
-                          group by comments.article_id order by count desc limit 1 offset 2})
+    @comments = Comment.includes(article: [:category]).group(:articles_id).order(:count_all).size
+    # where(:category_id => @category.id).
     # byebug
   end
 

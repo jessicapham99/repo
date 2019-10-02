@@ -29,14 +29,13 @@
         <%#= c %>
 <!--          <br/>-->
           <%#end %>
-                <td><%= comment['count'] %></td>
-                <td><%= comment['article_id'] %></td>
-                <td><%= comment['image'] %></td>
+<!--                <td><%#= comment['count'] %></td>-->
+<!--                <td><%#= comment['article_id'] %></td>-->
+<!--                <td><%#= comment['image'] %></td>-->
+        <%= comment %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Comment', new_comment_path %>
+<%#= link_to 'New Comment', new_comment_path %>

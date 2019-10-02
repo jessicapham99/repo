@@ -50,11 +50,14 @@
     <td rowspan="2" style="border-right: 1px solid #c4c4c9;">
       <% @comment.each do |com|%>
         <div class="card" style="width: 99%; margin: 10px; border: none">
-          <%= image_tag com['image'].url,height: "580",width: "800" unless com['image'].blank? %>
+          <%#= image_tag com['image'].url,height: "580",width: "800" unless com['image'].blank? %>
+<!--          <p class="card-text"><%#= com['image'] %></p>-->
+<!--          <img src="/uploads/article/image/<%#=com['article_id']%>/com['image']" width="500" class="brand-link" >-->
+          <img src="<%=asset_path(com['image']) %>" width="800" height="580" class="brand-link" >
           <div class="card-body">
-<!--            <b class="card-text"><%#= com.article.category.name %></b>-->
+            <b class="card-text"><%= com['catename'] %></b>
 <!--            <h5 class="card-title"><%#= com.article.name %></h5>-->
-            <h5 class="card-title"><a href="/articles/<%= com['id'] %>"><%= com['name'] %></a></h5>
+            <h5 class="card-title"><a href="/articles/<%= com['article_id'] %>"><%= com['name'] %></a></h5>
             <p class="card-text"><%= com['descript'] %></p>
           </div>
         </div>
@@ -63,11 +66,12 @@
       <td>
         <% @comment1.each do |com|%>
           <div class="card" style="width: 99%; margin: 10px; border: none">
-            <%= image_tag com['image'].url,height: "580",width: "800" unless com['image'].blank? %>
+            <img src="<%=asset_path(com['image']) %>" width="360" height="210" class="brand-link" >
+            <%#= image_tag com['image'].url,height: "250",width: "400" unless com['image'].blank? %>
             <div class="card-body">
-              <b class="card-text"><%= com.article.category.name %></b>
+              <b class="card-text"><%= com['catename'] %></b>
 <!--              <h5 class="card-title"><%#= com.article.name %></h5>-->
-              <h5 class="card-title"><a href="/articles/<%= com['id'] %>"><%= com['name'] %></a></h5>
+              <h5 class="card-title"><a href="/articles/<%= com['article_id'] %>"><%= com['name'] %></a></h5>
             </div>
           </div>
         <%end %>
@@ -77,11 +81,13 @@
     <td>
       <% @comment2.each do |com|%>
         <div class="card" style="width: 99%; margin: 10px; border: none">
-          <%= image_tag com['image'].url ,height: "580",width: "800" unless com['image'].blank? %>
+          <img src="<%=asset_path(com['image']) %>" width="360" height="210" class="brand-link" >
+          <%#= image_tag com['image'].url ,height: "580",width: "800" unless com['image'].blank? %>
           <div class="card-body">
 <!--            <b class="card-text"><%#= com.article.category.name %></b>-->
+            <b class="card-text"><%= com['catename'] %></b>
 <!--            <h5 class="card-title"><%#= com.article.name %></h5>-->
-            <h5 class="card-title"><a href="/articles/<%= com['id'] %>"><%= com['name'] %></a></h5>
+            <h5 class="card-title"><a href="/articles/<%= com['article_id'] %>"><%= com['name'] %></a></h5>
 
           </div>
         </div>
