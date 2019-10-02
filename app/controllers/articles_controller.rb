@@ -5,22 +5,23 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     if params[:tag]
-      @article = Article.tagged_with(params[:tag])
+      @articles = Article.tagged_with(params[:tag])
     else
-      @article = Article.all
+      @articles = Article.all
     end
-    @article = Article.all.order(created_at: :desc).paginate(page:params[:page], per_page: 3 )
+    @articles = Article.all
+                   .order(created_at: :desc).paginate(page:params[:page], per_page: 6)
 
 
-  #   a=0
-  #   p = (Article.count)/6.0
-  #   @articles = pages(a)
-  #   if p.class == 1.class
-  #     @pa = Array(1..p)
-  #   else
-  #     p=p+1
-  #     @pa = Array(1..p)
-  #   end
+    # a=0
+    # p = (Article.count)/6.0
+    # @articles = pages(a)
+    # if p.class == 1.class
+    #   @pa = Array(1..p)
+    # else
+    #   p=p+1
+    #   @pa = Array(1..p)
+    # end
   # end
   # def pages(a)
   #   Article.page(a).per(6)

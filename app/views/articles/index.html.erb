@@ -25,18 +25,18 @@
   <tr>
     <th colspan="7" style="margin-right: 50px; text-align: right">
     <div class="btn-group" role="group" aria-label="Basic example">
-      <%= paginate @users %>
-      <%# @pa.each do |page| %>
 
-<!--        <button type="button" class="btn btn-secondary" onclick=""><%#= page %></button>-->
-      <%#= link_to page, page %>
-      <%# end
-          <%= paginate @users %>
+
+
+        <%= paginate @articles, window: 2, outer_window: 3 %>
+
+
     </div>
     </th>
   </tr>
   </tfoot>
   <tbody>
+
   <% @articles.each do |article| %>
     <tr>
       <td style="text-align: left"><%= article.name %></td>
