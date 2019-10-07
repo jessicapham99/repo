@@ -27,14 +27,20 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'kaminari'
 gem 'carrierwave'
-gem 'mini_magick', '~> 4.3'
+gem 'mini_magick'
 gem 'ckeditor'
+gem 'paperclip'
+gem 'mongoid-paperclip', require: 'mongoid_paperclip'
+gem 'dragonfly'
+# gem 'mini_magick'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 gem 'simple_form'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'will_paginate'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

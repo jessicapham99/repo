@@ -18,7 +18,7 @@
 
   <div class="field">
     <%= form.label :user_id %>
-    <%= collection_select(:comment,:user_id, User.all, :id, :username) %>
+    <%= collection_select(:comment,:user_id, User.all, :id, :email) %>
   </div>
 
   <div class="field">

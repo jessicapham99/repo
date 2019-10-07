@@ -17,14 +17,14 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-<!--        <td><%#= comment.descript %></td>-->
-<!--        <td><%#= comment.user.username %></td>-->
-<!--        <td><%#= comment.article.name %></td>-->
-<!--        <td><%#= comment.create_time %></td>-->
-<!--        <td><%#= comment.parent_comment_id %></td>-->
-<!--        <td><%#= link_to 'Show', comment %></td>-->
-<!--        <td><%#= link_to 'Edit', edit_comment_path(comment) %></td>-->
-<!--        <td><%#= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        <td><%= comment.descript %></td>
+        <td><%= comment.user.email %></td>
+        <td><%= comment.article.name %></td>
+        <td><%= comment.create_time %></td>
+        <td><%= comment.parent_comment_id %></td>
+        <td><%= link_to 'Show', comment %></td>
+        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <%# comment.each do |c|%>
         <%#= c %>
 <!--          <br/>-->
@@ -32,7 +32,7 @@
 <!--                <td><%#= comment['count'] %></td>-->
 <!--                <td><%#= comment['article_id'] %></td>-->
 <!--                <td><%#= comment['image'] %></td>-->
-        <%= comment %>
+        <%#= comment %>
       </tr>
     <% end %>
   </tbody>

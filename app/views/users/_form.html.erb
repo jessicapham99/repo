@@ -13,14 +13,21 @@
       </div>
     <% end %>
     <table style="text-align: left; width: 75%; margin-left: 130px" class="table table-borderless">
+<!--      <tr>-->
+<!--        <td><h6><%#= form.label :username %></h6></td>-->
+<!--        <td><%#= form.text_field :username, class: "form-control", placeholder: "Username" %></td>-->
+<!--      </tr>-->
       <tr>
-        <td><h6><%= form.label :username %></h6></td>
-        <td><%= form.text_field :username, class: "form-control", placeholder: "Username" %></td>
+        <td><h6><%= form.label :email %></h6></td>
+        <td><%= form.text_field :email, class: "form-control", placeholder: "Email" %></td>
       </tr>
       <tr>
         <td><h6><%= form.label :password %></h6></td>
-        <td><%= form.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", placeholder: "Password"%></td>
-<!--        <td><%#= form.text_field :password, class: "form-control", placeholder: "Password"%></td>-->
+        <td><%= form.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control", placeholder: "password"%></td>
+      </tr>
+      <tr>
+        <td><h6><%= form.label :encrypted_password %></h6></td>
+        <td><%= form.text_field :encrypted_password, autofocus: true,class: "form-control", placeholder: "re-enter password"%></td>
       </tr>
 
       <tr>
@@ -28,10 +35,10 @@
         <td><%= form.text_field :fullname, class: "form-control", placeholder: "Fullname" %></td>
       </tr>
 
-      <tr>
-        <td><h6><%= form.label :email %></h6></td>
-        <td><%= form.text_field :email, class: "form-control", placeholder: "Email" %></td>
-      </tr>
+<!--      <tr>-->
+<!--        <td><h6><%#= form.label :email %></h6></td>-->
+<!--        <td><%#= form.text_field :email, class: "form-control", placeholder: "Email" %></td>-->
+<!--      </tr>-->
 
       <tr>
         <td><h6><%= form.label :phone_number %></h6></td>

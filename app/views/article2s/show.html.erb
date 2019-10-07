@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-sm-8" style="border-right: 1px solid #c4c4c9;">
+      <div class="card" style="width: 99%; padding-left: 55px; border: none">
+        <%= image_tag @article2.image.url, height: "450" if @article2.image?%>
+<br>
+          <h5 class="card-title" style="font-size: 35px"><%= @article2.name %></h5>
+          <p class="card-text" style="font-size: 20px; line-height: 1.5"><%= @article2.descript %></p>
+
+      </div>
+    <hr>
+    <div style="padding-left: 55px;">
+    <h4 style="font-weight: bold;">COMMENTS</h4>
+      <%= form_tag article2_path, :method => 'get'  do %>
+        <%= text_area_tag :comment, params[:comment], placeholder: "Comment here", size: "80x4"%>
+        <br>
+        <table >
+          <td>Sign in/ Sign up to Comment</td><td style="width: 490px"></td>
+          <td><%= submit_tag "POST", :name => nil, :class => "btn btn-dark"%></td>
+        </table>
+      <% end %>
+    </div>
+    <hr>
+    <div style="padding-left: 55px;">
+      <% @comment.each do |com| %>
+        <div class="card" style="width: 740px">
+          <div class="card-header">
+            <p style="font-size: 20px"><%= com.descript %></p>
+
+            <b style="font-size: 15px"><%= image_tag com.user.image.url, {height: 20, width: 20}  if com.user.image?%><a>     </a><%= com.user.fullname %></b>  -
+            <a><%= com.create_time %></a> <button style="margin-left: 230px"><%= image_tag "reply.png", {height: 30, width: 30} %>Reply</button>
+          </div>
+        </div>
+        <br>
+        <% @commentc.each do |com| %>
+          <div class="card" style="width: 690px; margin-left: 40px">
+            <div class="card-header">
+              <p style="font-size: 20px"><%= com.descript %></p>
+
+              <b style="font-size: 15px"><%= image_tag com.user.image.url, {height: 20, width: 20}  if com.user.image?%><a>     </a><%= com.user.fullname %></b>  -
+              <a><%= com.create_time %></a> <button style="margin-right: 26px; float: right"><%= image_tag "reply.png", {height: 30, width: 30} %>Reply</button>
+            </div>
+          </div><br>
+        <% end %>
+
+      <% end %>
+    </div>
+
+  </div>
+  <div class="col-sm-4" style="width: 90%">
+    <h4 style="font-weight: bold">RELATED POST</h4>
+
+          <!--            <h5 class="card-title"><%#= com.article.name %></h5>-->
+    <%# if @articles != nil %>
+    <% @articles.each do |art| %>
+      <td>
+        <div class="card" style="margin: 20px;border: none; height: 200px">
+          <%= image_tag art.image.url, height: "270",width: "360" if art.image?%>
+          <div class="card-body" style="text-align: justify-all">
+            <h5 class="card-title"><a href="/article2s/<%= art.id %>"><%= art.name %></a></h5>
+          </div>
+        </div>
+      </td>
+    <% end %>
+    <%# end %>
+
+  </div>
+</div>

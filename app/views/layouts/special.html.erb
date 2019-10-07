@@ -19,15 +19,15 @@
 <body>
 
 <header style="clear: both">
-  <div style="float: left; margin: 20px; font-size: 30px;">
+  <div style="float: left; margin: 20px; font-size: 30px; margin-left: 55px">
     PROJECT EXAMPLE
   </div>
-  <div style="float: right; margin: 20px; font-size: 15px;">
+  <div style="float: right; margin: 20px; font-size: 15px;margin-right: 55px">
     <a>Login</a>|
     <a>Register</a>
   </div>
 </header>
-<div style="clear: both">
+<div style="clear: both; margin-left: 1px">
   <menu style="clear: both">
     <ul class="nav nav-tabs">
       <li class="nav-item">
@@ -43,6 +43,25 @@
 
   </menu>
 </div>
+<div style="clear: both">
 <%= yield %>
+</div>
+
+<footer style="clear: both; margin-bottom: 5px; padding-bottom: 5px ">
+    <menu style="clear: both">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="/categories">Home</a>
+        </li>
+
+        <% @categories.each do |category| %>
+          <li class="nav-item">
+            <a class="nav-link" href="/categories/<%=category.id%>"><%= category.name %></a>
+          </li>
+        <% end %>
+      </ul>
+
+    </menu>
+</footer>
 </body>
 </html>

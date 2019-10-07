@@ -4,7 +4,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.includes(article: [:category]).group(:articles_id).order(:count_all).size
+    @comments = Comment.all
+        # includes(article: [:category]).group(:articles_id).order(:count_all).size
     # where(:category_id => @category.id).
     # byebug
   end
@@ -26,14 +27,15 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
+    @comments = Comment.all
     @comment = Comment.new(comment_params)
     @comment.create_time = Time.now
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @comment}
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        format.html { render :new}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -58,7 +60,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @comments, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

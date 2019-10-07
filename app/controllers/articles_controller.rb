@@ -1,18 +1,25 @@
 class ArticlesController < ApplicationController
+  layout 'admin'
   before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   # GET /articles
   # GET /articles.json
   def index
-    if params[:tag]
-      @articles = Article.tagged_with(params[:tag])
-    else
-      @articles = Article.all
-    end
-    @articles = Article.all
-                   .order(created_at: :desc).paginate(page:params[:page], per_page: 6)
-
-
+    # if params[:tag]
+    #   @articles = Article.tagged_with(params[:tag])
+    # else
+    #   @articles = Article.all
+    # end
+if(params[:search])
+    @articles = Article
+                    .where(Article.arel_table[:name].matches(params[:search].downcase))
+                   .order(created_at: :desc).paginate(page:params[:page], per_page: 6 )
+    # User.where(User.arel_table[:name].lower.matches("Bob".downcase))
+    # .find(:first, :conditions => ['name ~* ?', params[:search]])
+else
+  @articles = Article.all
+                  .order(created_at: :desc).paginate(page:params[:page], per_page: 6 )
+end
     # a=0
     # p = (Article.count)/6.0
     # @articles = pages(a)
@@ -45,7 +52,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
     @article.create_time = Time.now
-    @article.image = params[:image] # Assign a file like this, or
+    # @article.image = params[:image] # Assign a file like this, or
 
 # like this
 

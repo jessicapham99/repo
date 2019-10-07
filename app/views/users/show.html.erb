@@ -1,10 +1,14 @@
 <p id="notice"><%= notice %></p>
-<h3 style="margin-left: 40px; color: blue">Infomation of <%= @user.username %></h3>
+<h3 style="margin-left: 40px; color: blue">Infomation of <%= @user.fullname %></h3>
 <br>
 <table class="table" style="font-size: 15px">
+<!--  <tr>-->
+<!--    <td style="font-size: 15px"><strong>Username:</strong></td>-->
+<!--    <td style="font-size: 15px"> <%#= @user.username %></td>-->
+<!--  </tr>-->
   <tr>
-    <td style="font-size: 15px"><strong>Username:</strong></td>
-    <td style="font-size: 15px"> <%= @user.username %></td>
+    <td style="font-size: 15px"><strong>Email:</strong></td>
+    <td style="font-size: 15px"> <%= @user.email %></td>
   </tr>
 
   <!--<tr>-->
@@ -15,11 +19,6 @@
   <tr>
     <td style="font-size: 15px"><strong>Fullname:</strong></td>
     <td style="font-size: 15px"><%= @user.fullname %></td>
-  </tr>
-
-  <tr>
-    <td style="font-size: 15px"><strong>Email:</strong></td>
-    <td style="font-size: 15px"> <%= @user.email %></td>
   </tr>
 
   <tr>

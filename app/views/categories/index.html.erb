@@ -1,30 +1,3 @@
-<p id="notice"><%= notice %></p>
-
-<!--<h1>Categories</h1>-->
-
-<!--<table>-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th>Name</th>-->
-<!--      <th>Descript</th>-->
-<!--      <th colspan="3"></th>-->
-<!--    </tr>-->
-<!--  </thead>-->
-
-<!--  <tbody>-->
-    <%# @categories.each do |category| %>
-<!--      <tr>-->
-<!--        <td><%#= category.name %></td>-->
-<!--        <td><%#= category.descript %></td>-->
-<!--        <td><%#= link_to 'Show', category %></td>-->
-<!--        <td><%#= link_to 'Edit', edit_category_path(category) %></td>-->
-<!--        <td><%#= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-<!--      </tr>-->
-    <%# end %>
-<!--  </tbody>-->
-<!--</table>-->
-
-<!--<br>-->
 <script>
     $(function(){
         $.fn.limit = function($n){
@@ -45,46 +18,48 @@
     });
 </script>
 <%#= link_to 'New Category', new_category_path %>
-<table style="width: 95%">
+<div style="clear: both">
+<table>
   <tr>
     <td rowspan="2" style="border-right: 1px solid #c4c4c9;">
       <% @comment.each do |com|%>
-        <div class="card" style="width: 99%; margin: 10px; border: none">
+        <div class="card" style=" border: none; margin-left: 48px; margin-top: 20px">
           <%#= image_tag com['image'].url,height: "580",width: "800" unless com['image'].blank? %>
 <!--          <p class="card-text"><%#= com['image'] %></p>-->
 <!--          <img src="/uploads/article/image/<%#=com['article_id']%>/com['image']" width="500" class="brand-link" >-->
-          <img src="<%=asset_path(com['image']) %>" width="800" height="600" class="brand-link" >
-          <div class="card-body">
-            <table >
+          <div style="margin-left: 7px">
+          <img src="<%=asset_path(com['image']) %>" width="800" height="560" class="brand-link" >
+          </div>
+            <table border="0">
               <tr>
-                <td><b class="card-text"><%= com['catename'] %></b></td><td style="width: 500px"></td>
-                <td style="float: right"><%= image_tag "comment.png" ,height: 50,width: 50 %><b><%= com['count'] %></b></td>
+                <td><b><%= com['catename'] %></b></td><td style="width: 610px"></td>
+                <td style="float: right; margin-right: 7px"><%= image_tag "comment.png" ,height: 50,width: 50 %><b><%= com['count'] %></b></td>
               </tr>
             </table>
 
 <!--            <h5 class="card-title"><%#= com.article.name %></h5>-->
-            <h5 class="card-title"><a href="/articles/<%= com['article_id'] %>"><%= com['name'] %></a></h5>
-            <p class="card-text"><%= com['descript'] %></p>
+            <h5 class="card-title" style="margin-left: 5px"><a href="/article2s/<%= com['article_id'] %>"><%= com['name'] %></a></h5>
+            <p class="card-text" style="margin-left: 5px; margin-right: 5px"><%= com['descript'] %></p>
           </div>
-        </div>
+
     <%end %>
     </td>
-      <td>
+      <td style="padding-right: 55px">
         <% @comment1.each do |com|%>
-          <div class="card" style="width: 99%; margin: 10px; border: none">
+          <div class="card" style="margin-left:10px;border: none">
             <img src="<%=asset_path(com['image']) %>" width="360" height="200" class="brand-link" >
             <%#= image_tag com['image'].url,height: "250",width: "400" unless com['image'].blank? %>
-            <div class="card-body">
+
               <table >
                 <tr>
-                  <td><b class="card-text"><%= com['catename'] %></b></td><td style="width: 150px"></td>
+                  <td><b class="card-text"><%= com['catename'] %></b></td>
                   <td style="float: right"><%= image_tag "comment.png" ,height: 50,width: 50 %><b><%= com['count'] %></b></td>
                 </tr>
               </table>
 <!--              <h5 class="card-title"><%#= com.article.name %></h5>-->
-              <h5 class="card-title"><a href="/articles/<%= com['article_id'] %>"><%= com['name'] %></a></h5>
+              <h5 class="card-title"><a href="/article2s/<%= com['article_id'] %>"><%= com['name'] %></a></h5>
             </div>
-          </div>
+
         <%end %>
     </td>
   </tr>
@@ -94,42 +69,42 @@
         <div class="card" style="width: 99%; margin: 10px; border: none">
           <img src="<%=asset_path(com['image']) %>" width="360" height="200" class="brand-link" >
           <%#= image_tag com['image'].url ,height: "580",width: "800" unless com['image'].blank? %>
-          <div class="card-body">
+
 <!--            <b class="card-text"><%#= com.article.category.name %></b>-->
-            <table >
+            <table>
               <tr>
-                <td><b class="card-text"><%= com['catename'] %></b></td><td style="width: 150px"></td>
-                <td style="float: right"><%= image_tag "comment.png" ,height: 50,width: 50 %><b><%= com['count'] %></b></td>
+                <td><b class="card-text"><%= com['catename'] %></b></td>
+                <td style="float: right; margin-right: 55px;"><%= image_tag "comment.png" ,height: 50,width: 50 %><b><%= com['count'] %></b></td>
               </tr>
             </table>
 <!--            <h5 class="card-title"><%#= com.article.name %></h5>-->
-            <h5 class="card-title"><a href="/articles/<%= com['article_id'] %>"><%= com['name'] %></a></h5>
+            <h5 class="card-title"><a href="/article2s/<%= com['article_id'] %>"><%= com['name'] %></a></h5>
 
           </div>
-        </div>
+
       <%end %>
     </td>
   </tr>
 </table>
 <hr>
-<table>
+<table style="margin-left: 55px; clear: both">
   <tr>
-    <td colspan="3"><b>LATEST NEWS</b></td>
+    <td colspan="3" ><b>LATEST NEWS</b></td>
   </tr>
   <tr>
     <% @articles.each do |art| %>
       <td>
-        <div class="card" style="margin: 20px;border: none; height: 200px">
+        <div class="card" style="border: none; height: 200px; margin-top: 20px">
           <%= image_tag art.image.url, height: "270",width: "360" if art.image?%>
-          <div class="card-body" style="text-align: justify-all">
-
+          <div style="text-align: justify-all; margin-right: 25px">
             <table >
               <tr>
+                <br>
                 <td><b class="card-text"><%= art.category.name %></b></td><td style="width: 150px"></td>
               </tr>
             </table>
-            <h5 class="card-title"><a href="/articles/<%= art.id %>"><%= art.name %></a></h5>
-            <p class="card-text"><%= art.descript %></p>
+            <h5 class="card-title"><a href="/article2s/<%= art.id %>"><%= art.name %></a></h5>
+            <p class="card-text" style="margin-right: 10px"><%= art.descript %></p>
             <h6 class="card-text"><%= art.create_time %></h6>
           </div>
         </div>
@@ -137,3 +112,5 @@
     <% end %>
   </tr>
 </table>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>

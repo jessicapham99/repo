@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Article2s</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+<!--      <th>Image</th>-->
+      <th>Create time</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @article2s.each do |article2| %>
+      <tr>
+        <td><%= article2.name %></td>
+        <td><%= article2.category_id %></td>
+<!--        <td><%#= article2.image %></td>-->
+<!--        <td><%#= article2.descript %></td>-->
+        <td><%= article2.create_time %></td>
+        <td><%= link_to 'Show', article2 %></td>
+        <td><%= link_to 'Edit', edit_article2_path(article2) %></td>
+        <td><%= link_to 'Destroy', article2, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Article2', new_article2_path %>

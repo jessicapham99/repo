@@ -1,7 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1 style="margin: 20px; color: #2e59d9; margin-left: 160px">Current article list</h1>
-
+<div style="float: right;margin-right: 50px; margin-bottom: 20px">
+<%= form_tag articles_path, :method => 'get'  do %>
+  <%= text_field_tag :search, params[:search]%>
+<!--    <div class="btn btn-outline-primary">-->
+      <%= submit_tag "Search", :name => nil, :class => "btn btn-outline-primary"%>
+<!--    </div>-->
+<% end %>
+</div>
 <table class="table table-striped table-bordered" style="margin: 5px; color: black; text-align: center">
   <thead style="color: #dda20a; font-size: 20px">
   <tr>
@@ -27,10 +34,10 @@
     <div class="btn-group" role="group" aria-label="Basic example">
 
 
+<div style="margin-left: 500px">
+        <%= paginate @articles, window: 2, outer_window: 3 , :class => "paginate"%>
 
-        <%= paginate @articles, window: 2, outer_window: 3 %>
-
-
+</div>
     </div>
     </th>
   </tr>
